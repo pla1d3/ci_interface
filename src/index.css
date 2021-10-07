@@ -1,0 +1,7 @@
+@import url('https://yastatic.net/s3/frontend/yandex-font/v0.0.2/browser.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: YS Text;
+}

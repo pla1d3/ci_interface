@@ -1,0 +1,60 @@
+.button {
+  text-decoration: none;
+  color: #000;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  display: flex;
+  margin-right: 4px;
+}
+
+.basic {
+  background-color: #FFCC00;
+}
+.basic:hover {
+  background-color: #F2C200;
+}
+.basic:active {
+  border-color: #B38F00;
+}
+
+.minor {
+  background-color: #E6E6E6;
+}
+.minor:hover {
+  background-color: #DBDBDB;
+}
+.minor:active {
+  border-color: #B3B3B3;
+}
+
+.m {
+  padding: 12px 24px;
+}
+.s {
+  padding: 8px 16px;
+}
+
+.iconOnly {
+  padding: 8px;
+}
+
+.iconOnly .icon {
+  justify-content: center;
+  margin-right: 0;
+}

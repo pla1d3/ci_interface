@@ -1,0 +1,32 @@
+.input {
+  outline: none;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 2px solid #D9D9D9;
+  font-size: 14px;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: #B3B3B3;
+}
+
+.label {
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: flex;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.actionClear {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+}

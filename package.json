@@ -1,0 +1,38 @@
+{
+  "name": "ci_interface",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build -- -w",
+    "build": "npx rollup -c"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "dayjs": "^1.10.7",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.3.0",
+    "rollup": "^2.58.0",
+    "validate.js": "^0.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-react": "^7.14.5",
+    "@rollup/plugin-alias": "^3.1.5",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@svgr/rollup": "^5.5.0",
+    "eslint": "^7.32.0",
+    "postcss": "^8.3.9",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-serve": "^1.1.0"
+  }
+}

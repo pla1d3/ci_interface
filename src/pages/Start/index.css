@@ -1,0 +1,29 @@
+.start {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert {
+  width: 248px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+  flex-direction: column;
+}
+
+.alertText {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.alertIcon {
+  width: 124px;
+  height: 124px;
+}
+
+.alertButton {
+  margin-top: 24px;
+}

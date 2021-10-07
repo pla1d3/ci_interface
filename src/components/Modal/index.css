@@ -1,0 +1,40 @@
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.modal {
+  position: fixed;
+  width: 400px;
+  left: 50%;
+  top: 20%;
+  background-color: #fff;
+  margin-left: -200px;
+  z-index: 999;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+}
+
+.title {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 21px;
+}
+
+.actions {
+  display: flex;
+}
+
+.action {
+  margin-right: 8px;
+}
+
+.content {
+  margin-bottom: 8px;
+}

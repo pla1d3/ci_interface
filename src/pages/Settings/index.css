@@ -1,0 +1,47 @@
+.settings {
+  height: 100vh;
+  margin-top: 8px;
+  width: 400px;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.desc {
+  color: #7F8285;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.actions {
+  display: flex;
+}
+
+.button {
+  margin-right: 8px;
+}
+
+.form {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+@media screen and (max-width: 480px) {
+  .settings {
+    width: 100%;
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .button {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+}
