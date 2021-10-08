@@ -32,15 +32,15 @@ export default function History () {
       <div className={s.list}>
         {
           data.slice(0, limit).map(item=> (
-            <div className={s.card}>
+            <div key={item.id} className={s.card}>
               <div className={s.statusIcon}>
-                  {TYPE_ICONS[item.status]}
+                {TYPE_ICONS[item.status]}
               </div>
 
               <div className={s.content}>
                 <div className={s.desc}>
                   <div className={s.title}>
-                    <div className={c(s.id, s[item.status])}>#{item.id}</div>
+                    <div className={c(s.id, s[item.status])}>{`#${item.id}`}</div>
                     <div>{item.title}</div>
                   </div>
 
@@ -64,7 +64,7 @@ export default function History () {
                   </div>
                   <div className={s.timesItem}>
                     <TimeIcon className={s.icon} />
-                    <span>1 ч 20 мин</span>
+                    <span>{dayjs(item.time).format('H ч mm мин')}</span>
                   </div>
                 </div>
               </div>

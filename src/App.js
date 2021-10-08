@@ -1,11 +1,17 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import Routers from './Routers'
+import rootReducer from './reducers'
+import './index.css'
+
 import { Header, Footer } from 'components'
-import Routers from './routers'
+
+const store = createStore(rootReducer)
 
 export default function App () {
   return (
-    <BrowserRouter>
+    <Provider store={store}>
       <Header />
 
       <main>
@@ -13,6 +19,6 @@ export default function App () {
       </main>
 
       <Footer />
-    </BrowserRouter>
+    </Provider>
   )
 }

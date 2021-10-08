@@ -1,27 +1,24 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import { Button, NumberInput, Input, ErrorWrapper } from 'components'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeSettings } from 'actions'
 import validate from 'validate.js'
 import scheme from './sheme'
 import s from './index.css'
 
-const INIT_DATA = {
-  repository: '',
-  buildCommand: '',
-  mainBranch: ''
-}
-
 export default function Settings () {
   const history = useHistory()
-  const settings = JSON.parse(localStorage.getItem('settings'))
-  const [data, setData] = useState(settings || INIT_DATA)
+  const settings = useSelector(state => state.settings)
+  const dispatch = useDispatch()
+  const [data, setData] = useState(settings)
   const [errors, setErrors] = useState({})
 
   function onSubmit () {
     const errors = validate(data, scheme, { fullMessages: false })
     if (errors) return setErrors(errors)
 
-    localStorage.setItem('settings', JSON.stringify(data))
+    dispatch(changeSettings(data))
     history.push('/')
   }
 

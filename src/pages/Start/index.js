@@ -1,14 +1,16 @@
 import React, { useLayoutEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button } from 'components'
+import { useSelector } from 'react-redux'
 import { ToolsIcon } from 'icons'
 import s from './index.css'
 
 export default function Start () {
   const history = useHistory()
+  const settings = useSelector(state=> state.settings)
 
   useLayoutEffect(()=> {
-    if (localStorage.getItem('settings')) {
+    if (settings.repository) {
       history.push('/history')
     }
   }, [])

@@ -4,35 +4,39 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build -- -w",
-    "build": "npx rollup -c"
+    "start": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "clsx": "^1.1.1",
     "dayjs": "^1.10.7",
+    "fastify": "^3.22.0",
+    "fastify-static": "^4.4.0",
+    "nodemon": "^2.0.13",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
-    "rollup": "^2.58.0",
+    "redux": "^4.1.1",
     "validate.js": "^0.13.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
-    "@rollup/plugin-alias": "^3.1.5",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.5",
-    "@rollup/plugin-replace": "^3.0.0",
-    "@svgr/rollup": "^5.5.0",
-    "eslint": "^7.32.0",
-    "postcss": "^8.3.9",
-    "rollup-plugin-livereload": "^2.0.5",
-    "rollup-plugin-postcss": "^4.0.1",
-    "rollup-plugin-serve": "^1.1.0"
+    "@svgr/webpack": "^5.5.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^3.5.3",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.4.2",
+    "nodemon-webpack-plugin": "^4.5.2",
+    "style-loader": "^3.3.0",
+    "svgo-loader": "^3.0.0",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0",
+    "webpack-node-externals": "^3.0.0"
   }
 }
