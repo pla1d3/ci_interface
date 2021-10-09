@@ -52,10 +52,7 @@ export default function Header () {
             className={c(s.button)}
           >
             <CogIcon />
-            {
-              pathname !== '/history' &&
-              <span className={s.buttonText}>Settings</span>
-            }
+            <span className={s.buttonText}>Settings</span>
           </Button>
         }
       </div>
