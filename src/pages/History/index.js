@@ -9,9 +9,10 @@ import {
   PendingIcon
 } from 'icons'
 import { Button } from 'components'
+import Counter from 'performance/send'
+import { COUNTER_ID } from 'config'
 import dayjs from 'dayjs'
 import c from 'clsx'
-import Counter from 'performance/send'
 import data from './data.mock.json'
 import s from './index.css'
 
@@ -27,11 +28,11 @@ export default function History () {
 
   useEffect(()=> {
     counter.current = new Counter()
-    counter.current.init(COUNTER_ID, localStorage.getItem('req_id'), 'history');
-    counter.setAdditionalParams({ env: 'production', platform: 'touch' });
+    counter.current.init(COUNTER_ID, localStorage.getItem('req_id'), 'history')
+    counter.current.setAdditionalParams({ env: 'production', platform: 'touch' })
 
-    counter.send('connect', performance.timing.connectEnd - performance.timing.connectStart);
-    counter.send('ttfb', performance.timing.responseEnd - performance.timing.requestStart);
+    counter.current.send('connect', performance.timing.connectEnd - performance.timing.connectStart)
+    counter.current.send('ttfb', performance.timing.responseEnd - performance.timing.requestStart)
   }, [])
 
   function onShowMore () {
@@ -39,11 +40,11 @@ export default function History () {
 
     setTimeout(()=> {
       setLimit(limit + 3)
-      сounter.send('load', Date.now() - timeStart);
+      сounter.current.send('load', Date.now() - timeStart);
 
       const drawStart = Date.now();
       requestAnimationFrame(function() {
-        counter.send('draw', Date.now() - drawStart);
+        counter.current.send('draw', Date.now() - drawStart);
       })
     }, Math.random() * 1000 + 500);
   }
@@ -53,7 +54,7 @@ export default function History () {
       <div className={s.list}>
         {
           data.slice(0, limit).map(item=> (
-            <div className={s.card}>
+            <div className={s.card} key={item.id}>
               <div className={s.statusIcon}>
                   {TYPE_ICONS[item.status]}
               </div>

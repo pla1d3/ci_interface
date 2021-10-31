@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Content from 'components/Content'
 import Button from 'components/Button'
@@ -6,6 +6,7 @@ import Input from 'components/Input'
 import Modal from 'components/Modal'
 import Counter from 'performance/send'
 import { CogIcon, PlayIcon } from 'icons'
+import { COUNTER_ID } from 'config'
 import c from 'clsx'
 import s from './index.css'
 
@@ -17,7 +18,8 @@ export default function Header () {
 
   useEffect(()=> {
     counter.current = new Counter()
-    counter.current.init(COUNTER_ID, localStorage.getItem('req_id'), 'header');
+    counter.current.init(COUNTER_ID, localStorage.getItem('req_id'), 'header')
+    counter.current.setAdditionalParams({ env: 'production', platform: 'touch' })
   }, [])
 
   function onShowModal () {
@@ -25,7 +27,7 @@ export default function Header () {
 
     const drawStart = Date.now();
     requestAnimationFrame(function() {
-      counter.send('showModal', Date.now() - drawStart);
+      counter.current.send('showModal', Date.now() - drawStart);
     })
   }
 
