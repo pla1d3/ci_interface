@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build -- -w",
-    "build": "npx rollup -c"
+    "start": "npm run dev -- -w",
+    "dev": "npx rollup -c",
+    "build": "NODE_ENV=production npx rollup -c"
   },
   "author": "",
   "license": "ISC",
