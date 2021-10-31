@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import {
   CalendarIcon,
   CommitIcon,
@@ -11,6 +11,7 @@ import {
 import { Button } from 'components'
 import dayjs from 'dayjs'
 import c from 'clsx'
+import Counter from 'performance/send'
 import data from './data.mock.json'
 import s from './index.css'
 
@@ -21,10 +22,30 @@ const TYPE_ICONS = {
 }
 
 export default function History () {
+  const counter = useRef()
   const [limit, setLimit] = useState(3)
 
+  useEffect(()=> {
+    counter.current = new Counter()
+    counter.current.init(COUNTER_ID, localStorage.getItem('req_id'), 'history');
+    counter.setAdditionalParams({ env: 'production', platform: 'touch' });
+
+    counter.send('connect', performance.timing.connectEnd - performance.timing.connectStart);
+    counter.send('ttfb', performance.timing.responseEnd - performance.timing.requestStart);
+  }, [])
+
   function onShowMore () {
-    setLimit(limit + 3)
+    const timeStart = Date.now();
+
+    setTimeout(()=> {
+      setLimit(limit + 3)
+      сounter.send('load', Date.now() - timeStart);
+
+      const drawStart = Date.now();
+      requestAnimationFrame(function() {
+        counter.send('draw', Date.now() - drawStart);
+      })
+    }, Math.random() * 1000 + 500);
   }
 
   return (
