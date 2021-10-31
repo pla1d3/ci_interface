@@ -40,7 +40,7 @@ export default function History () {
 
     setTimeout(()=> {
       setLimit(limit + 3)
-      сounter.current.send('load', Date.now() - timeStart);
+      counter.current.send('load', Date.now() - timeStart);
 
       const drawStart = Date.now();
       requestAnimationFrame(function() {
