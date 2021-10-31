@@ -9,6 +9,8 @@ import alias from '@rollup/plugin-alias'
 import postcss from 'rollup-plugin-postcss'
 import json from '@rollup/plugin-json'
 import svgr from '@svgr/rollup'
+import html from '@rollup/plugin-html'
+import htmlTemplate from './public/index.js'
 
 export default {
   input: 'src/index.js',
@@ -25,14 +27,16 @@ export default {
     (process.env.NODE_ENV !== 'production' && serve({
       open: true,
       verbose: true,
-      contentBase: ['', 'public'],
+      contentBase: ['', 'build'],
       historyApiFallback: true,
       host: 'localhost',
       port: 3000
     })),
     (process.env.NODE_ENV !== 'production' && livereload({ watch: 'build' })),
+    html({ template: htmlTemplate }),
     alias({
       entries: [
+        { find: 'config', replacement: path.join(__dirname, 'config.json') },
         { find: 'icons', replacement: path.join(__dirname, 'src/icons') },
         { find: 'pages', replacement: path.join(__dirname, 'src/pages') },
         { find: 'components', replacement: path.join(__dirname, 'src/components') }
