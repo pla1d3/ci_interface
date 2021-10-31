@@ -22,15 +22,15 @@ export default {
     replace({ 'process.env.NODE_ENV': JSON.stringify('development') }),
     babel({ presets: ['@babel/preset-react'] }),
     commonjs(),
-    serve({
+    (process.env.NODE_ENV !== 'production' && serve({
       open: true,
       verbose: true,
       contentBase: ['', 'public'],
       historyApiFallback: true,
       host: 'localhost',
       port: 3000
-    }),
-    livereload({ watch: 'build' }),
+    })),
+    (process.env.NODE_ENV !== 'production' && livereload({ watch: 'build' })),
     alias({
       entries: [
         { find: 'icons', replacement: path.join(__dirname, 'src/icons') },

@@ -1,17 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Content from 'components/Content'
 import Button from 'components/Button'
 import Input from 'components/Input'
 import Modal from 'components/Modal'
+import Counter from 'performance/send'
 import { CogIcon, PlayIcon } from 'icons'
 import c from 'clsx'
 import s from './index.css'
 
 export default function Header () {
+  const counter = useRef()
   const { pathname } = useLocation()
   const [visibleModal, setVisibleModal] = useState(false)
   const [commitHash, setCommitHash] = useState('')
+
+  useEffect(()=> {
+    counter.current = new Counter()
+    counter.current.init(COUNTER_ID, localStorage.getItem('req_id'), 'header');
+  }, [])
+
+  function onShowModal () {
+    setVisibleModal(true)
+
+    const drawStart = Date.now();
+    requestAnimationFrame(function() {
+      counter.send('showModal', Date.now() - drawStart);
+    })
+  }
 
   return (
     <Content className={s.header}>
@@ -28,7 +44,7 @@ export default function Header () {
             <Button
               size="s"
               variant="minor"
-              onClick={()=> setVisibleModal(true)}
+              onClick={onShowModal}
               className={s.button}
             >
               <PlayIcon />
