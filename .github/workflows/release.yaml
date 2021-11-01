@@ -1,0 +1,34 @@
+name: Release
+on:
+  release:
+    types: [published]
+jobs:
+  tracker:
+    runs-on: ubuntu-latest
+    env:
+      OAUTH_TOKEN: ${{ secrets.OAUTH_TOKEN }}
+      ORG_ID: ${{ secrets.ORG_ID }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        name: 'setup node'
+        with:
+          node-version: '14'
+
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+
+      - name: 'create issue'
+        run: sh ./scripts/issue.sh
+
+      - name: 'run tests'
+        run: sh ./scripts/tests.sh
+
+      - name: 'docker'
+        run: sh ./scripts/docker.sh

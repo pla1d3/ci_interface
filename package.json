@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "npm run dev -- -w",
     "dev": "npx rollup -c",
-    "build": "NODE_ENV=production npx rollup -c"
+    "build": "NODE_ENV=production npx rollup -c",
+    "tests": "jest --no-color"
   },
   "author": "",
   "license": "ISC",
@@ -33,6 +34,7 @@
     "@rollup/plugin-replace": "^3.0.0",
     "@svgr/rollup": "^5.5.0",
     "eslint": "^7.32.0",
+    "jest": "^27.3.1",
     "postcss": "^8.3.9",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.1",
