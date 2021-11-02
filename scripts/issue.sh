@@ -10,11 +10,11 @@ ORG_ID="6461097"
 tag=$(git tag | sort -r | head -n1)
 prevTag=$(git tag | sort -r | tail -1 | head -n1)
 
-summary="release $tag (by Simon)"
+summary="release $tag - by Simon"
 author=$(git show ${tag} | grep Author: | head -1)
 date=$(git show ${tag} | grep Date: | head -1)
-changelog=$(git log --pretty=format:"%h - %s (%an, %ar)\n" ${prevTag}.${tag})
-description="Released by ${author}\n${date}\nChangelog:\n\n${changelog}"
+changelog=$(git log ${prevTag}...${tag} --oneline -1)
+description="Released by ${author}\n${date}\n\n${changelog}"
 
 curl -X POST ${API_URL} \
   -H "Content-Type: application/json", \
@@ -25,4 +25,4 @@ curl -X POST ${API_URL} \
       "summary": "'"${summary}"'",
       "type": "task",
       "description": "'"${description}"'"
-  }'
+  }' | jq -r '.id' > issueId.txt
