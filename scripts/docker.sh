@@ -9,8 +9,7 @@ ORG_ID="6461097"
 
 tag=$(git tag | sort -r | head -n1)
 
-cd ..
-docker build . -f Dockerfile --build-arg git_branch=$tag
+docker build . -f ../Dockerfile --build-arg git_branch=$tag
 
 status=""
 if [ $? -ne 0 ];
@@ -20,7 +19,6 @@ else
   status="build success"
 fi
 
-cd scripts
 issueId=$(cat issueId.txt)
 comment="Docker image: ${status}"
 
