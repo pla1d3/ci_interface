@@ -8,6 +8,8 @@ export default function Start () {
   const history = useHistory()
 
   useLayoutEffect(()=> {
+    console.log('test 1')
+
     if (localStorage.getItem('settings')) {
       history.push('/history')
     }
