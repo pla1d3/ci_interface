@@ -25,10 +25,10 @@ jobs:
           cmd: build
 
       - name: 'create issue'
-        run: sh ./scripts/issue.sh
+        run: bash ./scripts/issue.bash
 
       - name: 'run tests'
-        run: sh ./scripts/tests.sh
+        run: bash ./scripts/tests.bash
 
       - name: 'docker'
-        run: sh ./scripts/docker.sh
+        run: bash ./scripts/docker.bash
