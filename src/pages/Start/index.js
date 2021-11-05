@@ -9,6 +9,7 @@ export default function Start () {
 
   useLayoutEffect(()=> {
     console.log('test 1')
+    console.log('test 2')
 
     if (localStorage.getItem('settings')) {
       history.push('/history')
