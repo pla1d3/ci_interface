@@ -2,11 +2,6 @@
 
 API_URL="https://api.tracker.yandex.net/v2/issues"
 
-# ---
-OAUTH_TOKEN="AQAAAAAWrUaIAAd5OsDgtlQt6kfepZdg5aw2E5o"
-ORG_ID="6461097"
-# ---
-
 npm run tests 2>tests.txt
 testsInfo=$(cat tests.txt | tr -s "\n" " ")
 rm -rf tests.txt
