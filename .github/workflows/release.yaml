@@ -10,6 +10,7 @@ jobs:
       ORG_ID: ${{ secrets.ORG_ID }}
     steps:
       - uses: actions/checkout@v2
+        fetch-depth: 0
 
       - uses: actions/setup-node@v1
         name: 'setup node'
